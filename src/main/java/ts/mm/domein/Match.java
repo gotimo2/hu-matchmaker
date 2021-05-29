@@ -2,12 +2,15 @@ package ts.mm.domein;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
+import ts.mm.utils.Utils;
 
 public class Match {
     private static ArrayList<Match> alleMatches = new ArrayList<Match>();
     private String naam;
     private String id;
     public ArrayList<Team> teams = new ArrayList<Team>();
+    private Organisator organisator;
 
     public Match(String nm, String id){
         this.naam = nm;
@@ -30,7 +33,7 @@ public class Match {
         }
     }
 
-    public Match zoekMatch(String zoekID){
+    public static Match zoekMatch(String zoekID){
         for(Match m : alleMatches){
             if (m.id.equals(zoekID)){
                 return m;
@@ -49,5 +52,21 @@ public class Match {
            }
        }
        return null;
+    }
+
+    public static Match matchFromPost(String nm, String OrgPass, String OrgName){
+        String id = Utils.generateUniqueID();
+
+        Match outputMatch = new Match(nm, id);
+        outputMatch.organisator = new Organisator(OrgName, OrgPass, outputMatch);
+        outputMatch.teams.add(new Team("Team 1", 1, 5, outputMatch));
+        outputMatch.teams.add(new Team("Team 2", 2, 5, outputMatch));
+        alleMatches.add(outputMatch);
+        return outputMatch;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%s met organisator %s");
     }
 }

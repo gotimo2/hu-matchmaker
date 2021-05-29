@@ -48,12 +48,13 @@ h1{
     border-radius: 25px;
 }
 
-
 input{
     margin-left: 20px;
     text-align: left;
     color: black;
+    background-color: white;
 }
+
 body{
     background-color: darkgray ;
 }

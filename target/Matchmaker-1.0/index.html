@@ -19,13 +19,13 @@
                 <input type="text" id="matchid" name="matchid"><br>
             <button class= "joinbutton" type="submit" formmethod="get">Find Match</button>
         </form>
-        <form class="org-form">
+        <form action="newmatch" class="org-form">
             <label for="matchname">Match name:</label><br>
-                <input type="text" id="matchname" name="matchname"><br>
+                <input type="text" id="matchname" name="matchname" required="yes"><br>
             <label for="orgname">Organizer name:</label><br>
-                <input type="text" id="orgname" name="orgname"><br>
+                <input type="text" id="orgname" name="orgname" required="yes"><br>
             <label for="orgpass">Organizer Password:</label><br>
-                <input type="text" id="orgpass" name="orgpass"><br>
+                <input type="password" id="orgpass" name="orgpass" required="yes"><br>
             <button type="submit" formmethod="post">Make match</button>
         </form>
     </section>
