@@ -1,0 +1,79 @@
+h1{
+    color: red;
+    font-family: Calibri;
+    margin: auto;
+    text-align: center;
+}
+
+.main-set{
+    z-index: 2;
+    position: center;
+}
+.main-set label{
+    color:black;
+    font-family: Arial;
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+.org-form{
+    border-radius: 25px;
+    width: 280px;
+    height: 300px;
+    float: right;
+    border-style: double;
+    border-color: #2b2b2b;
+    border-width: 10px;
+}
+
+.join-form{
+    border-radius: 25px;
+    width: 280px;
+    height: 300px;
+    float: left;
+    border-style: double;
+    border-color: #2b2b2b;
+    border-width: 10px;
+}
+
+.main-shape{
+    margin: auto;
+    margin-top: 250px;
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: 25px;
+}
+
+input{
+    margin-left: 20px;
+    text-align: left;
+    color: black;
+    background-color: white;
+}
+
+body{
+    background-color: darkgray ;
+}
+
+button{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 240px;
+    height: 100px;
+    position: relative;
+    bottom: 0%;
+    font-size: 30px;
+    background-color: white;
+    border-radius: 25px;
+}
+
+.joinbutton{
+    position: relative;
+    bottom: -33%;
+    /*ik heb een half uur hier gezeten in een poging deze knop op de juiste plek te krijgen, ik ga hier niet meer tijd aan verdoen*/
+}

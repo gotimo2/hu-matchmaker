@@ -49,4 +49,12 @@ public class Team {
     }
 
 
+    public void setSpelers(ArrayList<Speler> spelers) {
+        this.spelers = spelers;
+    }
+
+
+    public void setMatch(Match match) {
+        this.match = match;
+    }
 }

@@ -8,6 +8,8 @@ public class Utils {
 
     private static String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
+    public static String mainScreenHTML = "";
+
     public static String generateString(Random rng, String characters, int length)
     {
         char[] text = new char[length];

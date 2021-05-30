@@ -67,6 +67,34 @@ public class Match {
 
     @Override
     public String toString(){
-        return String.format("%s met organisator %s");
+        return String.format("%s met organisator %s", this.naam, this.organisator);
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setTeams(ArrayList<Team> teams) {
+        this.teams = teams;
+    }
+
+    public Organisator getOrganisator() {
+        return organisator;
+    }
+
+    public void setOrganisator(Organisator organisator) {
+        this.organisator = organisator;
     }
 }
