@@ -45,9 +45,9 @@ public class Match {
         return teams;
     }
 
-    public Team getTeam(String nm){
+    public Team getTeam(int num){
        for(Team t: teams){
-           if(nm.equals(t.getNaam())){
+           if(num == t.getNummer()){
                return t;
            }
        }

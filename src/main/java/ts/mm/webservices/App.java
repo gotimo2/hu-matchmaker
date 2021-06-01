@@ -18,29 +18,14 @@ import java.nio.file.Paths;
 @Path("/")
 public class App
 {
-    //C:\Users\Timo\Documents\GitHub\hu-matchmaker\src\main\java\ts\mm\setup\JerseyConfig.java
-    //C:\Users\Timo\Documents\GitHub\hu-matchmaker\src\main\webapp\index.html
-    @GET
-    @Produces("text/html")
-    public String getmainPage() throws IOException {
-        File f = new File("../webapp/index.html");
-        System.out.println(f.canRead());
-        return Utils.mainScreenHTML = Files.readString(Paths.get("C:\\Users\\Timo\\Documents\\GitHub\\hu-matchmaker\\src\\main\\webapp\\index.html"));
-    }
-
-    @GET
-    @Produces("text/css")
-    @Path("styles.css")
-    public String getCSS() throws IOException {
-        return Files.readString(Paths.get("C:\\Users\\Timo\\Documents\\GitHub\\hu-matchmaker\\src\\main\\webapp\\styles.css"));
-    }
 
     @GET
     @Produces("text/html")
     @Path("a")
     public String test() throws IOException {
         System.out.println("ha");
-        return Files.readString(Paths.get("C:\\Users\\Timo\\Documents\\GitHub\\hu-matchmaker\\src\\main\\webapp\\index.html"));
+        return Files.readString(Paths.get("/index.html"));
+        //ik probeer nog steed relatieve filepaths te gebruiken maar het werkt maar niet...
     }
 
     @POST
