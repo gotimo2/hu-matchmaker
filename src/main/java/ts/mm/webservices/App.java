@@ -25,15 +25,14 @@ public class App
     public String test() throws IOException {
         System.out.println("ha");
         return Files.readString(Paths.get("/index.html"));
-        //ik probeer nog steed relatieve filepaths te gebruiken maar het werkt maar niet...
     }
 
     @POST
     @Path("newmatch")
     @Produces(MediaType.APPLICATION_JSON)
-    public Match NewMatch(@FormParam("matchname") String matchname, @FormParam("orgname") String orgname, @FormParam("orgpass") String orgpass){
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Match NewMatch(Match m){
         System.out.println("attempting match");
-        Match m = Match.matchFromPost(matchname, orgpass, orgname);
         System.out.println(m.toString());
         return m;
     }

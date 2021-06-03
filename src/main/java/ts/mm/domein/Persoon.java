@@ -17,6 +17,10 @@ public class Persoon {
         return naam;
     }
 
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
     public String getWachtwoord() {
         return wachtwoord;
     }
