@@ -15,9 +15,9 @@
     <h1>Matchmaker</h1>
     <section class="main-set">
 
-        <form class="join-form">
+        <form class="join-form" id="join-form">
             <label for="matchid">Match code:</label><br>
-                <input type="text" id="matchid" name="matchid"><br>
+                <input type="text" id="matchid" name="matchid" required="1"><br>
             <button class= "joinbutton" type="submit" formmethod="get">Find Match</button>
         </form>
         <form class="org-form" id="org-form">
@@ -31,7 +31,7 @@
         </form>
     </section>
 </div>
-
 <script src="formManager.js"></script>
+<script src="sendManager.js"></script>
 </body>
 </html>

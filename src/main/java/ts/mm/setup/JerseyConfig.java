@@ -7,7 +7,7 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("/match")
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
-        packages("ts.mm.webservices");
+        packages("ts.mm.webservices","ts.mm.security");
     }
 }
 
