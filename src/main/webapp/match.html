@@ -6,10 +6,33 @@
 </head>
 <body>
 <h1>Match</h1>
-<ul id="team1"></ul>
-<ul id="team2"></ul>
+<form id="joinform">
+    <label for="username">user name:</label><br>
+    <input name="username" id="username" required="1"><br>
+    <label for="pass">user name:</label><br>
+    <input name="pass" id="pass" type="password" required="1"><br>
+    <button id="jointeam1">Join team 1</button><br>
+    <button id="jointeam2">Join team 2</button><br>
+
+</form>
+<table id="team1">
+</table>
+<table id="team2"></table>
+<script src="JoinManager.js"></script>
 <script src="matchManager.js"></script>
 </body>
 
-<template id="speler"></template>
+<template id="playertemplate">
+    <tr>
+        <td id="name"></td>
+        <td><button class="loginbutton">Leave match</button></td>
+        <td><dialog>
+            <form>
+                <label for="password-input">password:</label><br>
+                <input type="text" id="password-input" name="password" required="1"><br>
+                <button>Leave match</button>
+            </form>
+        </dialog></td>
+    </tr>
+</template>
 </html>

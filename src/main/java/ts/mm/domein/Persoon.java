@@ -22,11 +22,11 @@ public class Persoon implements Principal {
         this.naam = nm;
         this.wachtwoord = ww;
         this.UID = generateUID();
-        allePersonen.add(this);
         this.match = m;
         if (getPersoon(nm) != null){
             throw new IllegalArgumentException("username already registered!");
         }
+        allePersonen.add(this);
     }
 
     public static String auth(String name, String password){

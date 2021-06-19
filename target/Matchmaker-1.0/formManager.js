@@ -12,7 +12,10 @@ console.log(org_form)
             .then(response => {
                 if (response.ok){
                     response.json()
-                        .then(data => console.log(data))
+                        .then(data => {
+                            window.sessionStorage.setItem("id", data['id'])
+                            window.location.replace(window.location.origin + "/match.html?matchid=" + data['id'])
+                        })
                 }
                 else {
                     response.json()

@@ -1,6 +1,8 @@
 package ts.mm.webservices;
 
 import ts.mm.domein.Match;
+import ts.mm.domein.Speler;
+import ts.mm.domein.Team;
 import ts.mm.utils.Utils;
 
 import javax.ws.rs.*;
@@ -27,7 +29,7 @@ public class MatchResource {
     public Response NewMatch(@FormParam("matchname") String matchname, @FormParam("orgname") String orgname, @FormParam("orgpass") String orgpass) {
 
         try {
-            Match m = Match.matchFromPost(matchname, orgname, orgpass);
+            Match m = Match.matchFromPost(matchname, orgpass, orgname);
             return Response.ok(m).build();
         } catch (Exception e) {
             return Response.status(Response.Status.CONFLICT).entity(new AbstractMap.SimpleEntry<String, String>("result", e.toString())).build();
@@ -44,6 +46,20 @@ public class MatchResource {
         }
         else{
             return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+
+    @POST
+    @Path("joinmatch")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response joinMatch(@FormParam("username") String username, @FormParam("pass") String pass, @FormParam("team") int team, @FormParam("matchid") String matchid){
+        try{
+            Speler s = new Speler(username, pass, Match.zoekMatch(matchid).getTeam(team), Match.zoekMatch(matchid));
+            return Response.ok(s).build();
+        }
+        catch (Exception e){
+            return Response.status(Response.Status.CONFLICT).entity(new AbstractMap.SimpleEntry<String, String>("result", e.toString())).build();
         }
     }
 }

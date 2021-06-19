@@ -1,5 +1,7 @@
 package ts.mm.domein;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 
 public class Team {
@@ -7,7 +9,7 @@ public class Team {
     private int nummer;
     private int grootte;
     private ArrayList<Speler> spelers = new ArrayList<Speler>();
-    private Match match;
+    @JsonIgnore private Match match;
 
     public Team(String nm, int num, int gr, Match m){
         this.naam = nm;
@@ -44,8 +46,14 @@ public class Team {
         return spelers;
     }
 
-    public void voegSpelerToe(Speler sp){
-        spelers.add(sp);
+    public void voegSpelerToe(Speler sp) throws Exception {
+        if (spelers.size() < grootte){
+            spelers.add(sp);
+        }
+        else{
+            throw new Exception("team full!");
+        }
+
     }
 
 
