@@ -1,0 +1,107 @@
+.mainJoin {
+    margin: auto;
+    margin-top: 250px;
+    width: 600px;
+    height: 400px;
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: 25px;
+}
+
+.mainline {
+    font-family: Calibri, serif;
+    display: flex;
+    justify-content: center;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+body {
+    background-color: darkgray;
+}
+
+table {
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    border-radius: 25px;
+    margin: 10px;
+    width: 280px;
+    height: 280px;
+}
+
+.teamname{
+    margin-left: 50px;
+    margin-inline: 50px;
+    margin-right: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.buttons{
+    height: 50px;
+    width: 100px;
+    margin: 5px;
+    border-width: 4px;
+    border-radius: 25px;
+    font-family: Calibri, serif;
+}
+h1 {
+    font-family: Calibri, serif;
+    margin: auto;
+    text-align: center;
+}
+
+#team1name{
+    color: blue;
+    text-align: left;
+    margin-right: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.closebutton{
+    top: 0;
+    left: 100%;
+    margin: 5px
+}
+
+#team2name {
+    color: red;
+    text-align: right;
+    margin-left: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+table{
+    border-spacing:0
+}
+
+td {
+    font-family: Calibri, serif;
+    text-align: center;
+    border-bottom: 3px solid black;
+    width: 50%;
+    height: 25px;
+    border-collapse: separate;
+    padding: 10px;
+}
+
+td button{
+    background-color: white;
+    border-radius: 10px;
+}
+
+.team{
+    display: inline-block;
+    float: left;
+}
+
+.teams{
+    display: flex;
+    justify-content: center;
+}

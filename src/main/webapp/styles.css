@@ -1,22 +1,23 @@
-h1{
+h1 {
     color: red;
-    font-family: Calibri;
+    font-family: Calibri, serif;
     margin: auto;
     text-align: center;
 }
 
-.main-set{
+.main-set {
     z-index: 2;
     position: center;
 }
-.main-set label{
-    color:black;
+
+.main-set label {
+    color: black;
     font-family: Arial;
     font-size: 25px;
     margin-left: 20px;
 }
 
-.org-form{
+.org-form {
     border-radius: 25px;
     width: 280px;
     height: 300px;
@@ -26,7 +27,7 @@ h1{
     border-width: 10px;
 }
 
-.join-form{
+.join-form {
     border-radius: 25px;
     width: 280px;
     height: 300px;
@@ -36,7 +37,7 @@ h1{
     border-width: 10px;
 }
 
-.main-shape{
+.main-shape {
     margin: auto;
     margin-top: 250px;
     width: 600px;
@@ -48,18 +49,18 @@ h1{
     border-radius: 25px;
 }
 
-input{
+input {
     margin-left: 20px;
     text-align: left;
     color: black;
     background-color: white;
 }
 
-body{
-    background-color: darkgray ;
+body {
+    background-color: darkgray;
 }
 
-button{
+button {
     margin-top: 20px;
     margin-left: 20px;
     margin-bottom: 20px;
@@ -72,7 +73,7 @@ button{
     border-radius: 25px;
 }
 
-.joinbutton{
+.joinbutton {
     position: relative;
     bottom: -33%;
     /*ik heb een half uur hier gezeten in een poging deze knop op de juiste plek te krijgen, ik ga hier niet meer tijd aan verdoen*/

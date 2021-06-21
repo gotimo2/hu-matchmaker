@@ -1,6 +1,7 @@
 package ts.mm.webservices;
 
 import ts.mm.domein.Match;
+import ts.mm.domein.Persoon;
 import ts.mm.domein.Speler;
 import ts.mm.domein.Team;
 import ts.mm.utils.Utils;
@@ -61,5 +62,26 @@ public class MatchResource {
         catch (Exception e){
             return Response.status(Response.Status.CONFLICT).entity(new AbstractMap.SimpleEntry<String, String>("result", e.toString())).build();
         }
+    }
+
+    @DELETE
+    @Path("leave")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response leaveMatch(@FormParam("name") String name, @FormParam("pass") String pass, @FormParam("matchid") String matchid){
+        Match m = Match.zoekMatch(matchid);
+        Persoon p = Persoon.getPersoon(name);
+        if(p.getWachtwoord().equals(pass)){
+            if(p.getMatch() == m);
+            for (Team t:m.getTeams()
+                 ) {
+                if(t.getSpelers().contains(p)){
+                    t.spelers.remove(p);
+                    Persoon.allePersonen.remove(p);
+                    return Response.ok().build();
+                }
+            }
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
 }

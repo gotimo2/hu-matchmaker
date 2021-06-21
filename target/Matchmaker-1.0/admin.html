@@ -28,11 +28,11 @@
     </div>
 
     <div class="teams">
-    <table id="team1" class="team">
-    </table>
-    <table id="team2" class="team">
-    </table>
-        </div>
+        <table id="team1" class="team">
+        </table>
+        <table id="team2" class="team">
+        </table>
+    </div>
 </div>
 <script src="JoinManager.js"></script>
 <script src="matchManager.js"></script>
@@ -56,7 +56,7 @@
                     <input type="text" id="password-input" name="password" required="1"><br>
                     <button id="leavebutton"
                             onclick="let p = this.parentElement.parentElement.parentElement.parentElement; leave(p.querySelector('#name').textContent, p.querySelector('#password-input').value)">
-                            Leave match
+                        Leave match
                     </button>
                     <!-- okokokok ik weet dat dit er slecht uitziet, maar dit wordt echt nog veel erger als ik het in een script doe  !-->
                 </form>

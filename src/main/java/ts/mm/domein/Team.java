@@ -8,7 +8,7 @@ public class Team {
     private String naam;
     private int nummer;
     private int grootte;
-    private ArrayList<Speler> spelers = new ArrayList<Speler>();
+    public ArrayList<Speler> spelers = new ArrayList<Speler>();
     @JsonIgnore private Match match;
 
     public Team(String nm, int num, int gr, Match m){

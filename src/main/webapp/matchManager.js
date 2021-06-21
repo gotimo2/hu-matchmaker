@@ -1,30 +1,23 @@
 let matchid = new URLSearchParams(window.location.search).get('matchid')
-let template = document.querySelector("#playertemplate")
+let nameHeading = document.querySelector("#matchname")
+
 
 function fillTable(data) {
     let template = document.querySelector("#playertemplate")
-    let team1table = document.querySelector("#team1")
-    let team2table = document.querySelector("#team2")
+    let m = new Array(data);
+    for (let match of m) {
+        console.log(match)
+        for (let team of match) {
+            let n = team['nummer']
+            document.querySelector("#team" + n + "name").textContent = team['naam']
+            for (let player of team['spelers']) {
+                console.log(player)
+                let clone = template.content.cloneNode(true)
+                let name = clone.querySelector("#name")
+                name.textContent = player['naam']
+                    console.log('appended team')
+                    document.querySelector("#team" + n).appendChild(clone)
 
-    console.log(data)
-    let teams = new Array(data);
-    console.log(teams)
-
-    for (let team of teams){
-        let n = team['nummer']
-        console.log(n)
-        for (let player of team){
-            console.log("psa")
-            let clone = template.content.cloneNode(true)
-            let name = clone.querySelector("#name")
-            name.textContent = player['name']
-            if(n === 1){
-                console.log('appended team 1')
-                team1table.appendChild(clone)
-            }
-            if(n === 2){
-                console.log('appended team 2')
-                team2table.appendChild(clone)
             }
         }
     }
@@ -32,11 +25,15 @@ function fillTable(data) {
 
 
 fetch("/match/" + matchid)
-    .then(result => {if (result.ok){
-        result.json()
-            .then(data => {console.log(data); fillTable(data['teams'])})
-    }
-    else{
-        window.alert("Match not found!")
-    }
+    .then(result => {
+        if (result.ok) {
+            result.json()
+                .then(data => {
+                    nameHeading.textContent = data['matchname'];
+                    fillTable(data['teams'])
+                })
+        } else {
+            window.alert("Match not found!")
+        }
     })
+    .catch(err => {window.alert("error setting up match: " + err); console.log(err)})

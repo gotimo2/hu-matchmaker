@@ -3,36 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Match</title>
+    <link rel="stylesheet" href="match.css">
 </head>
 <body>
-<h1>Match</h1>
-<form id="joinform">
-    <label for="username">user name:</label><br>
-    <input name="username" id="username" required="1"><br>
-    <label for="pass">user name:</label><br>
-    <input name="pass" id="pass" type="password" required="1"><br>
-    <button id="jointeam1">Join team 1</button><br>
-    <button id="jointeam2">Join team 2</button><br>
+<div class="mainJoin">
+    <h1 id="matchname">Match</h1>
+    <dialog id="joindialog">
+        <form id="joinform">
+            <button class="closebutton" onclick="this.parentElement.parentElement.open = false">close</button><br>
+            <label for="username">user name:</label><br>
+            <input name="username" id="username" required="1"><br>
+            <label for="pass">password:</label><br>
+            <input name="pass" id="pass" type="password" required="1"><br><br>
+            <button id="jointeam1">Join team 1</button>
+            <button id="jointeam2">Join team 2</button>
+            <br>
+        </form>
+    </dialog>
+    <div class="mainline">
+        <h3 id="team1name" class="teamname"></h3>
+        <button onclick="document.querySelector('#joindialog').open = true" class="buttons">Join match</button>
+        <button class="buttons">Organizer view</button>
+        <h3 id="team2name" class="teamname"></h3>
+    </div>
 
-</form>
-<table id="team1">
-</table>
-<table id="team2"></table>
+    <div class="teams">
+    <table id="team1" class="team">
+    </table>
+    <table id="team2" class="team">
+    </table>
+        </div>
+</div>
 <script src="JoinManager.js"></script>
 <script src="matchManager.js"></script>
+<script src="leaveFunction.js"></script>
 </body>
 
 <template id="playertemplate">
-    <tr>
+    <tr onmouseover="this.querySelector('#reveallogin').hidden=false"
+        onmouseleave="this.querySelector('#reveallogin').hidden=true">
         <td id="name"></td>
-        <td><button class="loginbutton">Leave match</button></td>
-        <td><dialog>
-            <form>
-                <label for="password-input">password:</label><br>
-                <input type="text" id="password-input" name="password" required="1"><br>
-                <button>Leave match</button>
-            </form>
-        </dialog></td>
+        <td>
+            <button id="reveallogin" class="loginbutton" hidden
+                    onclick="let p = this.parentElement.parentElement.querySelector('#pwinputD').open= true">Leave match
+            </button>
+        </td>
+        <td>
+            <dialog id="pwinputD">
+                <form onsubmit="return false">
+                    <button class="closebutton" onclick="this.parentElement.parentElement.open = false">close</button><br>
+                    <label for="password-input">password:</label><br>
+                    <input type="text" id="password-input" name="password" required="1"><br>
+                    <button id="leavebutton"
+                            onclick="let p = this.parentElement.parentElement.parentElement.parentElement; leave(p.querySelector('#name').textContent, p.querySelector('#password-input').value)">
+                            Leave match
+                    </button>
+                    <!-- okokokok ik weet dat dit er slecht uitziet, maar dit wordt echt nog veel erger als ik het in een script doe  !-->
+                </form>
+            </dialog>
+        </td>
     </tr>
 </template>
 </html>
