@@ -1,7 +1,7 @@
 let matchid = new URLSearchParams(window.location.search).get('matchid')
 let nameHeading = document.querySelector("#matchname")
-document.querySelector("#organizerbutton").addEventListener('click', ev => {
-    window.location.replace(window.location.origin + "/admin.html?matchid=" + matchid)
+document.querySelector("#returnbutton").addEventListener('click', ev => {
+    window.location.replace(window.location.origin + "/match.html?matchid=" + matchid)
 })
 
 function fillTable(data) {
@@ -17,8 +17,8 @@ function fillTable(data) {
                 let clone = template.content.cloneNode(true)
                 let name = clone.querySelector("#name")
                 name.textContent = player['naam']
-                    console.log('appended team')
-                    document.querySelector("#team" + n).appendChild(clone)
+                console.log('appended team')
+                document.querySelector("#team" + n).appendChild(clone)
 
             }
         }

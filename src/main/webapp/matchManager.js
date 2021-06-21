@@ -1,6 +1,8 @@
 let matchid = new URLSearchParams(window.location.search).get('matchid')
 let nameHeading = document.querySelector("#matchname")
-
+document.querySelector("#organizerbutton").addEventListener('click', ev => {
+    window.location.replace(window.location.origin + "/admin.html?matchid=" + matchid)
+})
 
 function fillTable(data) {
     let template = document.querySelector("#playertemplate")
