@@ -35,6 +35,7 @@ public class AuthFilter implements ContainerRequestFilter {
 
                 String user = claims.getSubject();
                 System.out.println("username " + user);
+                System.out.println(Persoon.getPersoon(user));
                 msc = new MySecurityContext(Persoon.getPersoon(user), scheme);
                 System.out.println("user is in");
 

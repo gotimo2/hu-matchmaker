@@ -17,7 +17,9 @@ org_form.onsubmit = async (a) => {
                     })
             } else {
                 response.json()
-                    .then(data => console.log(data))
+                    .then(data => {
+                        window.alert(data['result'])
+                        console.log(data)})
             }
         })
         .catch((error) => {

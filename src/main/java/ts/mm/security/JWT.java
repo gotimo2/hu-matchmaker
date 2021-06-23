@@ -13,7 +13,7 @@ import java.util.AbstractMap;
 import java.util.Calendar;
 
 
-@Path("auth")
+@Path("/auth")
 public class JWT {
 
     final static public Key key = MacProvider.generateKey();

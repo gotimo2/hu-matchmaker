@@ -12,7 +12,9 @@ document.getElementById("jointeam1").addEventListener("click", ev => {
                 window.alert("match joined!")
                 location.reload()
             } else {
-                window.alert("failed joining match!")
+                r.json()
+                    .then(res => {
+                        window.alert("failed joining match: " + res['result'])})
             }
 
         }).catch(e => window.alert(e))
@@ -33,7 +35,9 @@ document.getElementById("jointeam2").addEventListener("click", ev => {
                 window.alert("match joined!")
                 location.reload()
             } else {
-                window.alert("failed joining match!")
+                r.json()
+                    .then(res => {
+                        window.alert("failed joining match: " + res['result'])})
             }
 
         }).catch(e => window.alert(e))

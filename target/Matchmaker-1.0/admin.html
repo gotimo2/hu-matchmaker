@@ -7,22 +7,32 @@
 </head>
 <body>
 <div class="mainJoin">
+    <script src="adminFunctions.js"></script>
     <h1 id="matchname">Match</h1>
-    <dialog id="joindialog">
-        <form id="joinform">
-            <button class="closebutton" onclick="this.parentElement.parentElement.open = false">close</button><br>
-            <label for="username">user name:</label><br>
-            <input name="username" id="username" required="1"><br>
-            <label for="pass">password:</label><br>
-            <input name="pass" id="pass" type="password" required="1"><br><br>
-            <button id="jointeam1">Join team 1</button>
-            <button id="jointeam2">Join team 2</button>
-            <br>
-        </form>
+    <dialog id="adminLogin" open>
+        <p>Organizer name:</p>
+        <p id="orgname-p"></p>
+        <label for="adminPass">Organizer Password:</label><br>
+        <input id="adminPass"><br>
+        <button id="loginbutton">Login</button>
+
     </dialog>
     <div class="mainline">
         <h3 id="team1name" class="teamname"></h3>
-        <button onclick="document.querySelector('#joindialog').open = true" class="buttons">Join match</button>
+        <button onclick="document.getElementById('editDialog').open=true" class="buttons">Edit match</button>
+        <dialog id="editDialog">
+            <form id="editform">
+                <label for="t1nameinput">Team 1 name:</label><br>
+                <input id="t1nameinput" name="t1name" ><br>
+                <label for="t2nameinput">Team 2 name:</label><br>
+                <input id="t2nameinput" name="t2name"><br>
+                <label for="matchnameinput">Match name:</label><br>
+                <input id="matchnameinput" name="matchname"><br>
+                <label for="lockbox">Locked:</label><br>
+                <input id="lockbox" name="locked" type="checkbox"><br>
+                <button id="editbutton">OK</button> <button type="button" onclick="this.parentElement.parentElement.open = false">cancel</button>
+            </form>
+        </dialog>
         <button class="buttons" id="returnbutton">Player view</button>
         <h3 id="team2name" class="teamname"></h3>
     </div>
@@ -34,33 +44,20 @@
         </table>
     </div>
 </div>
-<script src="JoinManager.js"></script>
 <script src="adminManager.js"></script>
 <script src="leaveFunction.js"></script>
 </body>
 
 <template id="playertemplate">
-    <tr onmouseover="this.querySelector('#reveallogin').hidden=false"
-        onmouseleave="this.querySelector('#reveallogin').hidden=true">
+    <tr onmouseover="this.querySelector('#kickbutton').hidden=false"
+        onmouseleave="this.querySelector('#kickbutton').hidden=true">
         <td id="name"></td>
         <td>
-            <button id="reveallogin" class="loginbutton" hidden
-                    onclick="let p = this.parentElement.parentElement.querySelector('#pwinputD').open= true">Leave match
+            <button id="kickbutton" class="loginbutton" onclick="removePlayer(this.parentElement.parentElement.querySelector('#name').textContent)" hidden>
+                Remove player
             </button>
         </td>
         <td>
-            <dialog id="pwinputD">
-                <form onsubmit="return false">
-                    <button class="closebutton" onclick="this.parentElement.parentElement.open = false">close</button><br>
-                    <label for="password-input">password:</label><br>
-                    <input type="text" id="password-input" name="password" required="1"><br>
-                    <button id="leavebutton"
-                            onclick="let p = this.parentElement.parentElement.parentElement.parentElement; leave(p.querySelector('#name').textContent, p.querySelector('#password-input').value)">
-                        Leave match
-                    </button>
-                    <!-- okokokok ik weet dat dit er slecht uitziet, maar dit wordt echt nog veel erger als ik het in een script doe  !-->
-                </form>
-            </dialog>
         </td>
     </tr>
 </template>

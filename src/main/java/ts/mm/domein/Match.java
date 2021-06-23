@@ -13,7 +13,7 @@ public class Match {
 
     @JsonProperty("matchname")
     private String naam;
-
+    public Boolean locked = false;
     private String id;
     public ArrayList<Team> teams = new ArrayList<Team>();
     private Organisator organisator;
@@ -41,7 +41,7 @@ public class Match {
         return Objects.equals(naam, match.naam) && Objects.equals(id, match.id);
     }
 
-    public void verwijder(String ww){
+    public void verwijder(){
         for(Match m: alleMatches){
             if(this.equals(m)){
                 alleMatches.remove(m);
@@ -115,4 +115,7 @@ public class Match {
         this.organisator = organisator;
     }
 
+    public void lock() {
+        this.locked = true;
+    }
 }

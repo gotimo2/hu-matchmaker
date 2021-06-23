@@ -12,7 +12,10 @@ public class Speler extends Persoon {
         team.voegSpelerToe(this);
     }
 
-
+    public void Leave(){
+        Persoon.allePersonen.remove(this);
+        mijnTeam.spelers.remove(this);
+    }
     @JsonIgnore public Team getTeam(){
         return mijnTeam;
     }

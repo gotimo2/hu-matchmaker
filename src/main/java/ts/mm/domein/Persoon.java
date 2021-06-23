@@ -12,7 +12,7 @@ public class Persoon implements Principal {
     @JsonIgnore private String wachtwoord;
     public static ArrayList<Persoon> allePersonen = new ArrayList<Persoon>();
     public String role;
-    private Match match;
+    @JsonIgnore private Match match;
 
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;

@@ -28,7 +28,6 @@ public class MatchResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response NewMatch(@FormParam("matchname") String matchname, @FormParam("orgname") String orgname, @FormParam("orgpass") String orgpass) {
-
         try {
             Match m = Match.matchFromPost(matchname, orgpass, orgname);
             return Response.ok(m).build();
@@ -69,19 +68,24 @@ public class MatchResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response leaveMatch(@FormParam("name") String name, @FormParam("pass") String pass, @FormParam("matchid") String matchid){
-        Match m = Match.zoekMatch(matchid);
-        Persoon p = Persoon.getPersoon(name);
-        if(p.getWachtwoord().equals(pass)){
-            if(p.getMatch() == m);
-            for (Team t:m.getTeams()
-                 ) {
-                if(t.getSpelers().contains(p)){
-                    t.spelers.remove(p);
-                    Persoon.allePersonen.remove(p);
-                    return Response.ok().build();
+        try {
+            Match m = Match.zoekMatch(matchid);
+            Persoon p = Persoon.getPersoon(name);
+            if (p.getWachtwoord().equals(pass)) {
+                if (p.getMatch() == m) ;
+                for (Team t : m.getTeams()
+                ) {
+                    if (t.getSpelers().contains(p)) {
+                        t.spelers.remove(p);
+                        Persoon.allePersonen.remove(p);
+                        return Response.ok().build();
+                    }
                 }
             }
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.status(Response.Status.NOT_FOUND).build();
+        catch (Exception e){
+            return Response.status(Response.Status.CONFLICT).entity(new AbstractMap.SimpleEntry<String, String>("result", e.toString())).build();
+        }
     }
 }
