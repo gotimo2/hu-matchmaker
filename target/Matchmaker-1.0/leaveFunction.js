@@ -10,12 +10,12 @@ function leave(name, password) {
     })
         .then(res => {
                 if (res.ok) {
-                    window.alert("match left!")
                     location.reload()
                 } else {
                     window.alert("error leaving match!")
                 }
             }
         )
+        .catch(err => window.alert(err))
 }
 

@@ -9,7 +9,6 @@ document.getElementById("jointeam1").addEventListener("click", ev => {
             body: ed
         }).then(r => {
             if (r.ok) {
-                window.alert("match joined!")
                 location.reload()
             } else {
                 r.json()
@@ -32,7 +31,6 @@ document.getElementById("jointeam2").addEventListener("click", ev => {
             method: 'POST'
         }).then(r => {
             if (r.ok) {
-                window.alert("match joined!")
                 location.reload()
             } else {
                 r.json()

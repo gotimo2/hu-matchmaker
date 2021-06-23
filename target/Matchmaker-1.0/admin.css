@@ -1,0 +1,31 @@
+dialog{
+    margin: auto;
+    border-radius: 25px;
+    width: 550px;
+    height: 300px;
+}
+
+button{
+    border-radius: 25px;
+}
+
+body{
+    font-family: Calibri, serif;
+}
+
+fieldset{
+    border-radius: 25px;
+    margin: auto;
+    text-align: center;
+}
+#adminLogin{
+    font-family: Calibri, serif;
+}
+
+#adminLogin input{
+    margin: 10px;
+}
+
+#editform input{
+    margin: 8px;
+}

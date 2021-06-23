@@ -17,6 +17,9 @@ public class AdminResource {
    @RolesAllowed("organisator")
    public Response editMatch(@Context SecurityContext sc, @FormParam("matchname") String newname, @FormParam("t1name") String team1name, @FormParam("t2name") String team2name){
        try {
+           if (3 >= newname.length() | newname.length() >= 21 | 3 >= team1name.length() | team1name.length() >= 13 | 3 >= team2name.length() | team2name.length() >= 13 ){
+               throw new IllegalArgumentException("input too long or too short! how does that even happen?");
+           }
            Organisator o = (Organisator) sc.getUserPrincipal();
            Match m = o.getMatch();
            m.setNaam(newname);
@@ -86,17 +89,4 @@ public class AdminResource {
        }
    }
 
-   @PATCH
-   @Produces(MediaType.APPLICATION_JSON)
-   @RolesAllowed("organisator")
-   public Response lockMatch(@Context SecurityContext sc){
-       try {
-           Organisator o = (Organisator) sc.getUserPrincipal();
-           o.getMatch().lock();
-           return Response.ok().build();
-       }
-       catch (Exception e){
-           return Response.status(Response.Status.CONFLICT).entity(new AbstractMap.SimpleEntry<String, String>("result", e.toString())).build();
-       }
-   }
 }

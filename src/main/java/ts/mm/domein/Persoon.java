@@ -3,10 +3,11 @@ package ts.mm.domein;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ts.mm.utils.Utils;
 
+import java.io.Serializable;
 import java.security.Principal;
 import java.util.ArrayList;
 
-public class Persoon implements Principal {
+public class Persoon implements Principal, Serializable {
     private String naam;
     private String UID;
     @JsonIgnore private String wachtwoord;

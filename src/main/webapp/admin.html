@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <title>Match</title>
     <link rel="stylesheet" href="match.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 <div class="mainJoin">
     <script src="adminFunctions.js"></script>
     <h1 id="matchname">Match</h1>
     <dialog id="adminLogin" open>
-        <p>Organizer name:</p>
-        <p id="orgname-p"></p>
+        <fieldset>
+            <legend>Login</legend>
+        <p style="font-family: Calibri, serif">Organizer name:</p>
+        <p id="orgname-p" style="font-family: Calibri, serif"></p>
         <label for="adminPass">Organizer Password:</label><br>
-        <input id="adminPass"><br>
+        <input id="adminPass" type="password" required minlength="4" maxlength="12"><br>
         <button id="loginbutton">Login</button>
+        </fieldset>
 
     </dialog>
     <div class="mainline">
@@ -22,15 +26,24 @@
         <button onclick="document.getElementById('editDialog').open=true" class="buttons">Edit match</button>
         <dialog id="editDialog">
             <form id="editform">
-                <label for="t1nameinput">Team 1 name:</label><br>
-                <input id="t1nameinput" name="t1name" ><br>
-                <label for="t2nameinput">Team 2 name:</label><br>
-                <input id="t2nameinput" name="t2name"><br>
+                <fieldset>
+                <legend>Edit match</legend>
                 <label for="matchnameinput">Match name:</label><br>
-                <input id="matchnameinput" name="matchname"><br>
-                <label for="lockbox">Locked:</label><br>
-                <input id="lockbox" name="locked" type="checkbox"><br>
-                <button id="editbutton">OK</button> <button type="button" onclick="this.parentElement.parentElement.open = false">cancel</button>
+                <input id="matchnameinput" name="matchname" minlength="4" maxlength="20"><br>
+                <label for="t1nameinput">Team 1 name:</label><br>
+                <input id="t1nameinput" name="t1name" minlength="4" maxlength="12"><br>
+                <label for="t2nameinput">Team 2 name:</label><br>
+                <input id="t2nameinput" name="t2name" minlength="4" maxlength="12"><br>
+                <button id="editbutton">OK</button> <button type="button" onclick="this.parentElement.parentElement.parentElement.open = false">cancel</button><br>
+                </fieldset>
+            </form>
+            <form id="deleteform">
+                <fieldset>
+                <legend>Delete match</legend>
+                <input id="surecb" type="checkbox" required>
+                <label for="surecb">are you sure?</label><br>
+                <button id="deletebutton" type="submit">Delete match</button>
+                </fieldset>
             </form>
         </dialog>
         <button class="buttons" id="returnbutton">Player view</button>

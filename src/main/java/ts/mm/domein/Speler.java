@@ -2,7 +2,9 @@ package ts.mm.domein;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Speler extends Persoon {
+import java.io.Serializable;
+
+public class Speler extends Persoon implements Serializable {
     @JsonIgnore private Team mijnTeam;
     @JsonIgnore private Match match;
     public Speler(String nm, String ww, Team team, Match m) throws Exception {

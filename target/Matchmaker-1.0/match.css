@@ -10,6 +10,17 @@
     border-radius: 25px;
 }
 
+body{
+    font-family: Calibri, serif;
+}
+
+dialog{
+    border-radius: 25px;
+}
+dialog input{
+    margin: 10px
+}
+
 .mainline {
     font-family: Calibri, serif;
     display: flex;

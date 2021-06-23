@@ -1,5 +1,6 @@
 package ts.mm.domein;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
@@ -8,12 +9,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ts.mm.utils.Utils;
 
-public class Match {
-    private static ArrayList<Match> alleMatches = new ArrayList<Match>();
+public class Match implements Serializable {
+    public static ArrayList<Match> alleMatches = new ArrayList<Match>();
 
     @JsonProperty("matchname")
     private String naam;
-    public Boolean locked = false;
     private String id;
     public ArrayList<Team> teams = new ArrayList<Team>();
     private Organisator organisator;
@@ -42,12 +42,8 @@ public class Match {
     }
 
     public void verwijder(){
-        for(Match m: alleMatches){
-            if(this.equals(m)){
-                alleMatches.remove(m);
-            }
-            Persoon.allePersonen.removeIf(p -> p.getMatch() == this);
-        }
+        alleMatches.remove(this);
+        Persoon.allePersonen.removeIf(p -> p.getMatch() == this);
     }
 
     public static Match zoekMatch(String zoekID){
@@ -82,7 +78,7 @@ public class Match {
         return outputMatch;
     }
 
-    @Override
+
     public String toString(){
         return String.format("%s met organisator %s", this.naam, this.organisator.getNaam() );
     }
@@ -115,7 +111,4 @@ public class Match {
         this.organisator = organisator;
     }
 
-    public void lock() {
-        this.locked = true;
-    }
 }

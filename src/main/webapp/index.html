@@ -21,11 +21,11 @@
         </form>
         <form class="org-form" id="org-form">
             <label for="matchname">Match name:</label><br>
-            <input type="text" id="matchname" name="matchname" required="yes"><br>
+            <input type="text" id="matchname" name="matchname" required minlength="4" maxlength="20"><br>
             <label for="orgname">Organizer name:</label><br>
-            <input type="text" id="orgname" name="orgname" required="yes"><br>
+            <input type="text" id="orgname" name="orgname" required minlength="4" maxlength="12"><br>
             <label for="orgpass">Organizer Password:</label><br>
-            <input type="password" id="orgpass" name="orgpass" required="yes"><br>
+            <input type="password" id="orgpass" name="orgpass" required minlength="4" maxlength="12"><br>
             <button type="submit">Make match</button>
         </form>
     </section>

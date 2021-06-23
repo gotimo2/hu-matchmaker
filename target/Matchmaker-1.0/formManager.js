@@ -1,5 +1,4 @@
 org_form = document.getElementById("org-form")
-console.log(org_form)
 org_form.onsubmit = async (a) => {
     a.preventDefault();
     let fd = new FormData(org_form);
@@ -13,7 +12,7 @@ org_form.onsubmit = async (a) => {
                 response.json()
                     .then(data => {
                         window.sessionStorage.setItem("id", data['id'])
-                        window.location.replace(window.location.origin + "/match.html?matchid=" + data['id'])
+                        window.location.href = window.location.origin + "/match.html?matchid=" + data['id']
                     })
             } else {
                 response.json()

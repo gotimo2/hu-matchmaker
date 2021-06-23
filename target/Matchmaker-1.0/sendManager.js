@@ -7,18 +7,16 @@ join_form.onsubmit = async (a) => {
             if (response.ok) {
                 response.json()
                     .then(data => {
-                        console.log(data)
                         let id = data['id']
                         window.sessionStorage.setItem("id", data['id'])
-                        window.alert(id)
                     })
 
-                window.location.replace(window.location.origin + "/match.html?matchid=" + id);
+                window.location.href = window.location.origin + "/match.html?matchid=" + id
             } else {
                 window.alert("No match by this code found!")
             }
         })
         .catch(error => window.alert("there was an error: " + error))
 
-    //window.location.replace(window.location.origin + "/match.html?matchid="+ id);
+    //window.location.href(window.location.origin + "/match.html?matchid="+ id);
 }

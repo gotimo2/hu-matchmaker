@@ -2,9 +2,10 @@ package ts.mm.domein;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Team {
+public class Team implements Serializable {
     private String naam;
     private int nummer;
     private int grootte;

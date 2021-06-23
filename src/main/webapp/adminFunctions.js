@@ -15,6 +15,7 @@ function adminLogin(name, password){
         else{
             window.alert("login failed!")
         }})
+        .catch(err => window.alert(err))
 }
 
 function editMatch(FormData){
@@ -28,8 +29,8 @@ function editMatch(FormData){
     })
         .then(res => {
             if (res.ok){
-                window.alert("match updated!")
                 reloadData()
+                document.querySelector("#editDialog").open = false
             }
             else{
                 res.json()
@@ -38,6 +39,7 @@ function editMatch(FormData){
                     })
             }
         })
+        .catch(err => window.alert(err))
 
 }
 
@@ -54,7 +56,6 @@ function removePlayer(playername){
     })
         .then(res => {
             if (res.ok){
-                window.alert("player removed!")
                 reloadData()
             }
             else{
@@ -64,6 +65,7 @@ function removePlayer(playername){
                     })
             }
         })
+        .catch(err => window.alert(err))
 }
 
 function fillTable(data) {
@@ -71,18 +73,15 @@ function fillTable(data) {
     console.log(data)
     let m = new Array(data);
     for (let match of m) {
-        console.log(match)
         for (let team of match) {
             let n = team['nummer']
             document.querySelector("#team" + n + "name").textContent = team['naam']
             document.querySelector("#t" + n + "nameinput").value = team['naam']
             document.querySelector("#team" + n).innerHTML = ""
             for (let player of team['spelers']) {
-                console.log(player)
                 let clone = template.content.cloneNode(true)
                 let name = clone.querySelector("#name")
                 name.textContent = player['naam']
-                console.log('appended team')
                 document.querySelector("#team" + n).appendChild(clone)
             }
         }
@@ -95,7 +94,7 @@ function reloadData(){
             if (result.ok) {
                 result.json()
                     .then(data => {
-                        nameHeading.textContent = data['matchname'];
+                        nameHeading.textContent = data['matchname'] + " (organizer view)";
                         orgnamep.textContent = data['organisator']['naam']
                         fillTable(data['teams'])
                     })
@@ -104,4 +103,26 @@ function reloadData(){
             }
         })
         .catch(err => {window.alert("error setting up match: " + err); console.log(err)})
+}
+
+function deleteMatch(){
+    const jwttoken = window.sessionStorage.getItem('JWT');
+    const bearer = 'Bearer ' + jwttoken;
+    fetch("/match/admin", {
+        method:'DELETE',
+        headers : {'Authorization': bearer}
+    })
+        .then(res => {
+            if (res.ok){
+                window.alert("Match deleted")
+                window.location.href = "/index.html"
+            }
+            else{
+                res.json()
+                    .then(e => {
+                        window.alert("error:" + e['result'])
+                    })
+            }
+        })
+        .catch(err => window.alert(err))
 }

@@ -29,6 +29,9 @@ public class MatchResource {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response NewMatch(@FormParam("matchname") String matchname, @FormParam("orgname") String orgname, @FormParam("orgpass") String orgpass) {
         try {
+            if (3 >= matchname.length() | matchname.length() >= 21 | 3 >= orgname.length() | orgname.length() >= 13 | 3 >= orgpass.length() | orgpass.length() >= 13 ){
+                throw new IllegalArgumentException("input too long or too short!");
+            }
             Match m = Match.matchFromPost(matchname, orgpass, orgname);
             return Response.ok(m).build();
         } catch (Exception e) {
@@ -54,6 +57,9 @@ public class MatchResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response joinMatch(@FormParam("username") String username, @FormParam("pass") String pass, @FormParam("team") int team, @FormParam("matchid") String matchid){
+        if(3 >= username.length() | username.length() >= 13 | 3 >= pass.length() | pass.length() >= 13){
+            throw new IllegalArgumentException("Input too short or too long!");
+        }
         try{
             Speler s = new Speler(username, pass, Match.zoekMatch(matchid).getTeam(team), Match.zoekMatch(matchid));
             return Response.ok(s).build();
