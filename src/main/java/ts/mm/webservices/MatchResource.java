@@ -83,7 +83,6 @@ public class MatchResource {
                 ) {
                     if (t.getSpelers().contains(p)) {
                         t.spelers.remove(p);
-                        Persoon.allePersonen.remove(p);
                         return Response.ok().build();
                     }
                 }

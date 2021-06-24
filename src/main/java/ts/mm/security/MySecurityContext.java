@@ -6,8 +6,8 @@ import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
 
 public class MySecurityContext implements SecurityContext {
-    private Persoon user;
-    private String scheme;
+    private final Persoon user;
+    private final String scheme;
 
     public MySecurityContext(Persoon user, String scheme) {
         this.user = user;

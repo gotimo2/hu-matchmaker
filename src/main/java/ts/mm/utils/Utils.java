@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Utils {
 
-    private static String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    private static final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     public static String generateString(Random rng, String characters, int length)
     {

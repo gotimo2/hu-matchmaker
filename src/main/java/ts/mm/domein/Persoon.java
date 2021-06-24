@@ -9,11 +9,22 @@ import java.util.ArrayList;
 
 public class Persoon implements Principal, Serializable {
     private String naam;
-    private String UID;
+    private final String UID;
     @JsonIgnore private String wachtwoord;
-    public static ArrayList<Persoon> allePersonen = new ArrayList<Persoon>();
+    public static ArrayList<Persoon> allePersonen(){
+        ArrayList<Persoon> list = new ArrayList<Persoon>();
+        for (Match m: Match.alleMatches
+             ) {
+            list.add(m.getOrganisator());
+            for (Team t: m.getTeams()
+                 ) {
+                list.addAll(t.getSpelers());
+            }
+        }
+        return list;
+    }
     public String role;
-    @JsonIgnore private Match match;
+    @JsonIgnore private final Match match;
 
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
@@ -27,11 +38,10 @@ public class Persoon implements Principal, Serializable {
         if (getPersoon(nm) != null){
             throw new IllegalArgumentException("username already registered!");
         }
-        allePersonen.add(this);
     }
 
     public static String auth(String name, String password){
-        for (Persoon p: allePersonen
+        for (Persoon p: allePersonen()
              ) {
             if(p.naam.equals(name) && p.wachtwoord.equals(password)){
                 return p.role;
@@ -41,7 +51,7 @@ public class Persoon implements Principal, Serializable {
     }
 
     public static Persoon getPersoon(String name){
-        for (Persoon p: allePersonen
+        for (Persoon p: allePersonen()
              ) {
             if(p.naam.equals(name)){
                 return p;
@@ -68,7 +78,7 @@ public class Persoon implements Principal, Serializable {
     }
 
     public static Persoon getPersoonID(String ID){
-        for (Persoon p: allePersonen
+        for (Persoon p: allePersonen()
              ) {
             if(p.UID.equals(ID)){
                 return p;

@@ -1,13 +1,11 @@
 package ts.mm.domein;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import ts.mm.utils.Utils;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Random;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import ts.mm.utils.Utils;
 
 public class Match implements Serializable {
     public static ArrayList<Match> alleMatches = new ArrayList<Match>();
@@ -43,7 +41,6 @@ public class Match implements Serializable {
 
     public void verwijder(){
         alleMatches.remove(this);
-        Persoon.allePersonen.removeIf(p -> p.getMatch() == this);
     }
 
     public static Match zoekMatch(String zoekID){

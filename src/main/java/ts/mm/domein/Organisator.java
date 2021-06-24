@@ -1,7 +1,5 @@
 package ts.mm.domein;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.io.Serializable;
 
 public class Organisator extends Persoon implements Serializable {

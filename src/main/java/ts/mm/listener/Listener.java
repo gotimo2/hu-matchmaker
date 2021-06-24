@@ -15,11 +15,6 @@ public class Listener implements ServletContextListener {
         } catch (Exception e) {
             System.out.println("error during match loading: " + e);
         }
-        try {
-            PersistenceManager.loadPersonen();
-        } catch (Exception e) {
-            System.out.println("error during Persoon loading: " + e);
-        }
     }
 
     @Override
@@ -28,11 +23,6 @@ public class Listener implements ServletContextListener {
             PersistenceManager.saveMatches();
         } catch (Exception e) {
             System.out.println("error during match saving: " + e);
-        }
-        try {
-            PersistenceManager.savePersonen();
-        } catch (Exception e) {
-            System.out.println("error during persoon saving: " + e);
         }
     }
 }

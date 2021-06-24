@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 
 public class Speler extends Persoon implements Serializable {
-    @JsonIgnore private Team mijnTeam;
+    @JsonIgnore private final Team mijnTeam;
     @JsonIgnore private Match match;
     public Speler(String nm, String ww, Team team, Match m) throws Exception {
         super(nm, ww, m);
@@ -15,7 +15,6 @@ public class Speler extends Persoon implements Serializable {
     }
 
     public void Leave(){
-        Persoon.allePersonen.remove(this);
         mijnTeam.spelers.remove(this);
     }
     @JsonIgnore public Team getTeam(){

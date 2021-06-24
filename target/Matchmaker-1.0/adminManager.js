@@ -6,7 +6,7 @@ document.querySelector("#returnbutton").addEventListener('click', ev => {
     window.location.href = window.location.origin + "/match.html?matchid=" + matchid
 })
 
-document.querySelector("#editbutton").addEventListener('click', ev => {
+document.querySelector("#editform").addEventListener('submit', ev => {
     ev.preventDefault()
     editMatch(new FormData(document.querySelector("#editform")))
 })
