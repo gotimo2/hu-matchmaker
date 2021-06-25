@@ -9,7 +9,7 @@
 <div class="mainJoin">
     <h1 id="matchname">Match</h1>
     <dialog id="joindialog">
-        <form id="joinform">
+        <form id="joinform" onsubmit="return false">
             <button class="closebutton" onclick="this.parentElement.parentElement.open = false">close</button><br>
             <label for="username">user name:</label><br>
             <input name="username" id="username" required="1" minlength="4" maxlength="12"><br>

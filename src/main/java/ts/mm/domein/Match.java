@@ -66,7 +66,6 @@ public class Match implements Serializable {
 
     public static Match matchFromPost(String nm, String OrgPass, String OrgName){
         String id = Utils.generateUniqueID();
-
         Match outputMatch = new Match(nm, id);
         outputMatch.organisator = new Organisator(OrgName, OrgPass, outputMatch);
         outputMatch.teams.add(new Team("Team 1", 1, 5, outputMatch));
