@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class PersistenceManager {
     private final static String ENDPOINT = "https://matchmakerblob.blob.core.windows.net/";
-    private final static String SASTOKEN = "?sv=2020-02-10&ss=b&srt=sco&sp=rwdlacx&se=2023-06-20T22:00:00Z&st=2021-06-23T22:00:00Z&spr=https,http&sig=dUaU2LznLwFzMBVlDhJMQ9IzmkYUjkkRXGreLRtvCyg%3D";
+    private final static String SASTOKEN = "lmao"
     private final static String CONTAINER = "matchcontainer";
 
 
